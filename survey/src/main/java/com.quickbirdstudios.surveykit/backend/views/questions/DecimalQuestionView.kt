@@ -7,12 +7,12 @@ import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.afterTextChanged
-import com.quickbirdstudios.surveykit.backend.views.question_parts.FloatTextFieldPart
+import com.quickbirdstudios.surveykit.backend.views.question_parts.DecimalTextFieldPart
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import com.quickbirdstudios.surveykit.result.question_results.FloatQuestionResult
 
-internal class FloatQuestionView(
+internal class DecimalQuestionView(
     context: Context,
     id: StepIdentifier,
     isOptional: Boolean,
@@ -21,13 +21,13 @@ internal class FloatQuestionView(
     nextButtonText: String,
     skipButtonText: String,
     @StringRes private val hintText: Int = R.string.empty,
-    private val answerFormat: AnswerFormat.FloatAnswerFormat,
+    private val answerFormat: AnswerFormat.DecimalAnswerFormat,
     private val preselected: Float? = null
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText, skipButtonText) {
 
     //region Members
 
-    private lateinit var questionAnswerView: FloatTextFieldPart
+    private lateinit var questionAnswerView: DecimalTextFieldPart
 
     //endregion
 
@@ -46,7 +46,7 @@ internal class FloatQuestionView(
     override fun setupViews() {
         super.setupViews()
 
-        questionAnswerView = content.add(FloatTextFieldPart.withHint(context, hintText))
+        questionAnswerView = content.add(DecimalTextFieldPart.withHint(context, hintText))
         questionAnswerView.field.gravity = Gravity.CENTER
         questionAnswerView.field.setHint(answerFormat.hint)
         questionAnswerView.field.afterTextChanged { footer.canContinue = isValidInput() }

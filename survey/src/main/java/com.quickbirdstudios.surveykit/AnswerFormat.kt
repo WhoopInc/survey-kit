@@ -17,7 +17,7 @@ sealed class AnswerFormat {
         val hint: String = ""
     ) : AnswerFormat()
 
-    data class FloatAnswerFormat(
+    data class DecimalAnswerFormat(
         val defaultValue: Float? = null,
         val minValue: Float? = null,
         val maxValue: Float? = null,
