@@ -10,7 +10,7 @@ internal class FloatTextFieldPart(context: Context) : TextFieldPart(context) {
 
     init {
         id = R.id.floatFieldPartField
-        this.field.inputType = InputType.TYPE_CLASS_NUMBER
+        this.field.inputType = InputType.TYPE_NUMBER_FLAG_DECIMAL
         this.textAlignment = View.TEXT_ALIGNMENT_CENTER
     }
 
