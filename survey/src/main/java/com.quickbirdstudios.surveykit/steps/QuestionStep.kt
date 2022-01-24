@@ -30,6 +30,7 @@ class QuestionStep(
             is MultipleChoiceAnswerFormat -> createMultipleChoiceQuestion(context, stepResult)
             is ScaleAnswerFormat -> createScaleQuestion(context, stepResult)
             is IntegerAnswerFormat -> createIntegerQuestion(context, stepResult)
+            is FloatAnswerFormat -> createFloatQuestion(context, stepResult)
             is BooleanAnswerFormat -> createBooleanQuestion(context, stepResult)
             is ValuePickerAnswerFormat -> createValuePickerQuestion(context, stepResult)
             is DateAnswerFormat -> createDatePickerQuestion(context, stepResult)
@@ -106,6 +107,19 @@ class QuestionStep(
             nextButtonText = nextButtonText,
             answerFormat = this.answerFormat as IntegerAnswerFormat,
             preselected = stepResult.toSpecificResult<IntegerQuestionResult>()?.answer,
+            skipButtonText = skipButtonText
+        )
+
+    private fun createFloatQuestion(context: Context, stepResult: StepResult?) =
+        FloatQuestionView(
+            context = context,
+            id = id,
+            title = title,
+            text = text,
+            isOptional = isOptional,
+            nextButtonText = nextButtonText,
+            answerFormat = this.answerFormat as FloatAnswerFormat,
+            preselected = stepResult.toSpecificResult<FloatQuestionResult>()?.answer,
             skipButtonText = skipButtonText
         )
 
