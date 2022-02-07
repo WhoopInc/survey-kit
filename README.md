@@ -108,27 +108,29 @@ InstructionStep(
 ```
 The `title` is the general title of the Survey you want to conduct. <br/>
 The `text` is, in this case, the introduction text which should give an introduction, about what the survey is about.<br/>
-The `buttonText` specifies the text of the button, which will start the survey.
-All of these properties have to be `String`s.
+The `buttonText` specifies the text of the button, which will start the survey. All of these
+properties have to be resource Ids.
 
 #### `CompletionStep`
+
 ```kotlin
 CompletionStep(
-    title = getString(R.string.finish_question_title),
-    text = getString(R.string.finish_question_text),
-    buttonText = getString(R.string.finish_question_submit)
+    title = R.string.finish_question_title,
+    text = R.string.finish_question_text,
+    buttonText = R.string.finish_question_submit
 )
 ```
 The `title` is the general title of the Survey you want to conduct, same as for the `InstructionStep`. <br/>
 The `text` is here should be something motivational: that the survey has been completed successfully. <br/>
-The `buttonText` specifies the text of the button, which will end the survey.
-All of these properties have to be `String`s.
+The `buttonText` specifies the text of the button, which will end the survey. All of these
+properties have to be resource Ids.
 
 #### `QuestionStep`
+
 ```kotlin
 QuestionStep(
-    title = getString(R.string.about_you_question_title),
-    text = getString(R.string.about_you_question_text),
+    title = R.string.about_you_question_title,
+    text = R.string.about_you_question_text,
     answerFormat = AnswerFormat.TextAnswerFormat(
         multipleLines = true,
         maximumLength = 100
