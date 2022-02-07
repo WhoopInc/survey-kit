@@ -2,7 +2,6 @@ package com.quickbirdstudios.example.ui.main
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Parcelable
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
@@ -12,15 +11,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.example.R
-import com.quickbirdstudios.surveykit.AnswerFormat
-import com.quickbirdstudios.surveykit.FinishReason
-import com.quickbirdstudios.surveykit.Identifier
-import com.quickbirdstudios.surveykit.ImageChoice
-import com.quickbirdstudios.surveykit.NavigableOrderedTask
-import com.quickbirdstudios.surveykit.NavigationRule
-import com.quickbirdstudios.surveykit.StepIdentifier
-import com.quickbirdstudios.surveykit.SurveyTheme
-import com.quickbirdstudios.surveykit.TextChoice
+import com.quickbirdstudios.surveykit.*
 import com.quickbirdstudios.surveykit.backend.views.main_parts.AbortDialogConfiguration
 import com.quickbirdstudios.surveykit.backend.views.step.StepView
 import com.quickbirdstudios.surveykit.result.QuestionResult
@@ -31,8 +22,9 @@ import com.quickbirdstudios.surveykit.steps.InstructionStep
 import com.quickbirdstudios.surveykit.steps.QuestionStep
 import com.quickbirdstudios.surveykit.steps.Step
 import com.quickbirdstudios.surveykit.survey.SurveyView
-import java.util.Date
 import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -237,11 +229,12 @@ class CustomStep : Step {
 
             override fun createResults(): QuestionResult =
                 CustomResult(
-                    root.findViewById<EditText>(R.id.input).text.toString(),
-                    "stringIdentifier",
-                    id,
-                    Date(),
-                    Date()
+                    customData = root.findViewById<EditText>(R.id.input).text.toString(),
+                    stringIdentifier = "stringIdentifier",
+                    id = id,
+                    startDate = Date(),
+                    endDate = Date(),
+                    answer = null
                 )
 
             override fun isValidInput(): Boolean = this@CustomStep.isOptional
@@ -276,5 +269,6 @@ data class CustomResult(
     override val stringIdentifier: String,
     override val id: Identifier,
     override val startDate: Date,
-    override var endDate: Date
-) : QuestionResult, Parcelable
+    override var endDate: Date,
+    override val answer: @RawValue Any?
+) : QuestionResult

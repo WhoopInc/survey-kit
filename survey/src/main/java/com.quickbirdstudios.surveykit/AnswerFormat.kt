@@ -5,15 +5,22 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.IntRange
 import androidx.lifecycle.Lifecycle
 import com.quickbirdstudios.surveykit.backend.address.AddressSuggestionProvider
-import java.util.Calendar
-import java.util.Date as JavaDate
-import java.util.regex.Pattern
 import kotlinx.android.parcel.Parcelize
+import java.util.*
+import java.util.regex.Pattern
+import java.util.Date as JavaDate
 
 sealed class AnswerFormat {
 
     data class IntegerAnswerFormat(
         val defaultValue: Int? = null,
+        val hint: String = ""
+    ) : AnswerFormat()
+
+    data class DecimalAnswerFormat(
+        val defaultValue: Float? = null,
+        val minValue: Float? = null,
+        val maxValue: Float? = null,
         val hint: String = ""
     ) : AnswerFormat()
 

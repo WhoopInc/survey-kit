@@ -3,8 +3,8 @@ package com.quickbirdstudios.surveykit.result.question_results
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.Identifier
 import com.quickbirdstudios.surveykit.result.QuestionResult
-import java.util.Date
 import kotlinx.android.parcel.Parcelize
+import java.util.*
 
 @Parcelize
 data class DateQuestionResult(
@@ -12,5 +12,5 @@ data class DateQuestionResult(
     override val id: Identifier,
     override val startDate: Date,
     override var endDate: Date = Date(),
-    val answer: AnswerFormat.DateAnswerFormat.Date?
+    override val answer: AnswerFormat.DateAnswerFormat.Date?
 ) : QuestionResult

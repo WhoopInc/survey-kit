@@ -11,6 +11,7 @@
     <item name="textFieldPartField" type="id" />
 
     <item name="integerFieldPartField" type="id" />
+    <item name="decimalFieldPartField" type="id" />
 
     <item name="seekBarPartField" type="id" />
 
