@@ -7,14 +7,10 @@ import com.quickbirdstudios.surveykit.FinishReason
 import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.SurveyTheme
-import com.quickbirdstudios.surveykit.backend.views.main_parts.AbortDialogConfiguration
-import com.quickbirdstudios.surveykit.backend.views.main_parts.Content
-import com.quickbirdstudios.surveykit.backend.views.main_parts.Dialogs
-import com.quickbirdstudios.surveykit.backend.views.main_parts.Footer
-import com.quickbirdstudios.surveykit.backend.views.main_parts.Header
+import com.quickbirdstudios.surveykit.backend.views.main_parts.*
 import com.quickbirdstudios.surveykit.backend.views.question_parts.InfoTextPart
 import com.quickbirdstudios.surveykit.result.QuestionResult
-import java.util.Date
+import java.util.*
 
 abstract class QuestionView(
     context: Context,
@@ -73,7 +69,8 @@ abstract class QuestionView(
                     abortDialogConfiguration?.message ?: R.string.abort_dialog_message,
                     abortDialogConfiguration?.neutralMessage
                         ?: R.string.abort_dialog_neutral_message,
-                    abortDialogConfiguration?.negativeMessage ?: R.string.abort_dialog_neutral_message
+                    abortDialogConfiguration?.negativeMessage
+                        ?: R.string.abort_dialog_negative_message
                 )
             ) {
                 onCloseListener(createResults(), FinishReason.Discarded)

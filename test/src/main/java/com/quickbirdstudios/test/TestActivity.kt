@@ -21,6 +21,7 @@ import com.quickbirdstudios.surveykit.steps.QuestionStep
 import com.quickbirdstudios.surveykit.steps.Step
 import com.quickbirdstudios.surveykit.survey.SurveyView
 import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
 import java.util.*
 
 internal class TestActivity : AppCompatActivity() {
@@ -257,11 +258,12 @@ class CustomStep : Step {
 
             override fun createResults(): QuestionResult =
                 CustomResult(
-                    root.findViewById<EditText>(R.id.input).text.toString(),
-                    "stringIdentifier",
-                    id,
-                    Date(),
-                    Date()
+                    customData = root.findViewById<EditText>(R.id.input).text.toString(),
+                    stringIdentifier = "stringIdentifier",
+                    id = id,
+                    startDate = Date(),
+                    endDate = Date(),
+                    answer = null
                 )
 
             override fun isValidInput(): Boolean = this@CustomStep.isOptional
@@ -301,5 +303,6 @@ data class CustomResult(
     override val stringIdentifier: String,
     override val id: Identifier,
     override val startDate: Date,
-    override var endDate: Date
+    override var endDate: Date,
+    override val answer: @RawValue Any?
 ) : QuestionResult, Parcelable

@@ -12,5 +12,5 @@ data class DateTimeQuestionResult(
     override val id: Identifier,
     override val startDate: Date,
     override var endDate: Date = Date(),
-    val answer: AnswerFormat.DateTimeAnswerFormat.DateTime?
+    override val answer: AnswerFormat.DateTimeAnswerFormat.DateTime?
 ) : QuestionResult

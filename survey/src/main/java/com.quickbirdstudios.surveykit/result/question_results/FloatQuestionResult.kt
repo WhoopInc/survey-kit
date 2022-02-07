@@ -11,5 +11,5 @@ data class FloatQuestionResult(
     override val startDate: Date,
     override var endDate: Date = Date(),
     override val stringIdentifier: String,
-    val answer: Float?
+    override val answer: Float?
 ) : QuestionResult
