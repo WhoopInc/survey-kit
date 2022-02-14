@@ -38,7 +38,7 @@ internal class EmailQuestionView(
     )
 
     override fun isValidInput(): Boolean {
-        return answerFormat.isValid(emailField.field.text.toString())
+        return answerFormat.isValid?.invoke(emailField.field.text.toString()) ?: true
     }
 
     override fun setupViews() {

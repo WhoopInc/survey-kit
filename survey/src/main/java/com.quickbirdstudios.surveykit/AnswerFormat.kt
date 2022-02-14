@@ -48,7 +48,7 @@ sealed class AnswerFormat {
     }
 
     data class TextAnswerFormat(
-        val maxLines: Int,
+        val maxLines: Int?,
         val hintText: String? = null,
         val isValid: ((String) -> Boolean)? = null
     ) : AnswerFormat()
@@ -167,7 +167,7 @@ sealed class AnswerFormat {
 
     data class EmailAnswerFormat(
         val hintText: String? = null,
-        val isValid: (String) -> Boolean = defaultEmailValidation
+        val isValid: ((String) -> Boolean)? = defaultEmailValidation
     ) : AnswerFormat()
 
     data class ImageSelectorFormat(

@@ -50,7 +50,7 @@ internal class TextQuestionView(
         questionAnswerView = content.add(
             TextFieldPart.withHint(context, answerFormat.hintText ?: "")
         )
-        questionAnswerView.field.maxLines = answerFormat.maxLines
+        questionAnswerView.field.maxLines = answerFormat.maxLines ?: 1
         questionAnswerView.field.afterTextChanged { footer.canContinue = isValidInput() }
         questionAnswerView.field.setText(preselected)
     }
