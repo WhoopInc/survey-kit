@@ -1,6 +1,5 @@
 package com.quickbirdstudios.surveykit.result.question_results
 
-import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.Identifier
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import kotlinx.android.parcel.Parcelize
@@ -12,5 +11,5 @@ data class BooleanQuestionResult(
     override val id: Identifier,
     override val startDate: Date,
     override var endDate: Date = Date(),
-    override val answer: AnswerFormat.BooleanAnswerFormat.Result?
+    override val answer: Boolean?
 ) : QuestionResult

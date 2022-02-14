@@ -2,6 +2,7 @@ package com.quickbirdstudios.surveykit.backend.views.questions
 
 import android.content.Context
 import com.quickbirdstudios.surveykit.AnswerFormat
+import com.quickbirdstudios.surveykit.AnswerFormat.BooleanAnswerFormat.Result.*
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.TextChoice
 import com.quickbirdstudios.surveykit.backend.views.question_parts.SingleChoicePart
@@ -18,7 +19,7 @@ internal class BooleanQuestionView(
     nextButtonText: String,
     skipButtonText: String,
     private val answerFormat: AnswerFormat.BooleanAnswerFormat,
-    private var preselected: AnswerFormat.BooleanAnswerFormat.Result?
+    private var preselected: Boolean?
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText, skipButtonText) {
 
     //region Members
@@ -48,7 +49,12 @@ internal class BooleanQuestionView(
     override fun setupViews() {
         super.setupViews()
 
-        val selected = preselected ?: answerFormat.defaultValue
+        val selected: AnswerFormat.BooleanAnswerFormat.Result =
+            when (preselected) {
+                true -> PositiveAnswer
+                false -> NegativeAnswer
+                else -> answerFormat.defaultValue
+            }
 
         booleanAnswerPart = content.add(SingleChoicePart(context))
         booleanAnswerPart.options = answerFormat.textChoices
@@ -66,9 +72,9 @@ internal class BooleanQuestionView(
         val positiveStringId = answerFormat.positiveAnswerText
         val negativeStringId = answerFormat.negativeAnswerText
         return when (this) {
-            AnswerFormat.BooleanAnswerFormat.Result.None -> null
-            AnswerFormat.BooleanAnswerFormat.Result.PositiveAnswer -> TextChoice(positiveStringId)
-            AnswerFormat.BooleanAnswerFormat.Result.NegativeAnswer -> TextChoice(negativeStringId)
+            None -> null
+            PositiveAnswer -> TextChoice(positiveStringId)
+            NegativeAnswer -> TextChoice(negativeStringId)
             else -> null
         }
     }

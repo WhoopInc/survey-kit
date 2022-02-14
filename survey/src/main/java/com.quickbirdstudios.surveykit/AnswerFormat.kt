@@ -60,14 +60,16 @@ sealed class AnswerFormat {
     ) : AnswerFormat() {
 
         enum class Result {
-            None, PositiveAnswer, NegativeAnswer;
+            None,
+            PositiveAnswer,
+            NegativeAnswer;
         }
 
         val textChoices = listOf(TextChoice(positiveAnswerText), TextChoice(negativeAnswerText))
 
         fun toResult(id: String?) = when (id) {
-            positiveAnswerText -> Result.PositiveAnswer
-            negativeAnswerText -> Result.NegativeAnswer
+            positiveAnswerText -> true
+            negativeAnswerText -> false
             else -> null
         }
     }
