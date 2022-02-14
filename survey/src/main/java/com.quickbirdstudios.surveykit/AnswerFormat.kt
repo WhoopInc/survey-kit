@@ -50,7 +50,7 @@ sealed class AnswerFormat {
     data class TextAnswerFormat(
         val maxLines: Int,
         val hintText: String? = null,
-        val isValid: ((String) -> Boolean) = { text -> text.isNotEmpty() }
+        val isValid: ((String) -> Boolean)? = null
     ) : AnswerFormat()
 
     data class BooleanAnswerFormat(
