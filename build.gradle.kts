@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
         jcenter()
         google()
-        maven { url = uri("https://repo.quickbirdstudios.com/artifactory/public") }
+//        maven { url = uri("https://repo.quickbirdstudios.com/artifactory/public") }
     }
 
     dependencies {
