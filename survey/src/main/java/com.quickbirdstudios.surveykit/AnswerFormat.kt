@@ -54,10 +54,17 @@ sealed class AnswerFormat {
     ) : AnswerFormat()
 
     data class BooleanAnswerFormat(
-        val positiveAnswerText: String,
-        val negativeAnswerText: String,
-        val defaultValue: Result = Result.None
+        var positiveAnswerText: String?,
+        var negativeAnswerText: String?,
+        var defaultValue: Result?
     ) : AnswerFormat() {
+        // rather than having these as default values, set them up in init block to allow for
+        // JSON deserialization, which does not pay attention to default parameters
+        init {
+            positiveAnswerText = positiveAnswerText ?: "yes"
+            negativeAnswerText = negativeAnswerText ?: "no"
+            defaultValue = defaultValue ?: Result.None
+        }
 
         enum class Result {
             None,
@@ -65,7 +72,7 @@ sealed class AnswerFormat {
             NegativeAnswer;
         }
 
-        val textChoices = listOf(TextChoice(positiveAnswerText), TextChoice(negativeAnswerText))
+        val textChoices = listOf(TextChoice(positiveAnswerText!!), TextChoice(negativeAnswerText!!))
 
         fun toResult(id: String?) = when (id) {
             positiveAnswerText -> true
@@ -82,8 +89,8 @@ sealed class AnswerFormat {
             check(defaultValue == null || choices.contains(defaultValue)) {
                 throw IllegalStateException(
                     "${ValuePickerAnswerFormat::class.simpleName}:" +
-                        "${ValuePickerAnswerFormat::defaultValue.name}($defaultValue) " +
-                        "has to be part of " + ValuePickerAnswerFormat::choices.name + "($choices)"
+                            "${ValuePickerAnswerFormat::defaultValue.name}($defaultValue) " +
+                            "has to be part of " + ValuePickerAnswerFormat::choices.name + "($choices)"
                 )
             }
         }

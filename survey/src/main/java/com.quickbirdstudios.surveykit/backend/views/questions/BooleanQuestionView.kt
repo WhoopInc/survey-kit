@@ -53,7 +53,7 @@ internal class BooleanQuestionView(
             when (preselected) {
                 true -> PositiveAnswer
                 false -> NegativeAnswer
-                else -> answerFormat.defaultValue
+                else -> answerFormat.defaultValue!!
             }
 
         booleanAnswerPart = content.add(SingleChoicePart(context))
@@ -69,12 +69,10 @@ internal class BooleanQuestionView(
     private fun AnswerFormat.BooleanAnswerFormat.Result?.toSelectedTextChoice(
         answerFormat: AnswerFormat.BooleanAnswerFormat
     ): TextChoice? {
-        val positiveStringId = answerFormat.positiveAnswerText
-        val negativeStringId = answerFormat.negativeAnswerText
         return when (this) {
             None -> null
-            PositiveAnswer -> TextChoice(positiveStringId)
-            NegativeAnswer -> TextChoice(negativeStringId)
+            PositiveAnswer -> TextChoice(answerFormat.positiveAnswerText!!)
+            NegativeAnswer -> TextChoice(answerFormat.negativeAnswerText!!)
             else -> null
         }
     }
