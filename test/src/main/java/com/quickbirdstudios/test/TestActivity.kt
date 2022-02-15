@@ -149,9 +149,9 @@ internal class TestActivity : AppCompatActivity() {
             title = this.resources.getString(R.string.boolean_example_title),
             text = this.resources.getString(R.string.boolean_example_text),
             answerFormat = AnswerFormat.BooleanAnswerFormat(
-                positiveAnswerText = this.resources.getString(R.string.yes),
-                negativeAnswerText = this.resources.getString(R.string.no),
-                defaultValue = AnswerFormat.BooleanAnswerFormat.Result.NegativeAnswer
+                positiveAnswer = this.resources.getString(R.string.yes),
+                negativeAnswer = this.resources.getString(R.string.no),
+                defaultValueParam = AnswerFormat.BooleanAnswerFormat.Result.NegativeAnswer
             )
         )
         valuePickerStep = QuestionStep(

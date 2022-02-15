@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.annotation.IntRange
 import androidx.lifecycle.Lifecycle
+import com.quickbirdstudios.surveykit.AnswerFormat.BooleanAnswerFormat.Result.None
 import com.quickbirdstudios.surveykit.backend.address.AddressSuggestionProvider
 import kotlinx.android.parcel.Parcelize
 import java.util.*
@@ -54,17 +55,16 @@ sealed class AnswerFormat {
     ) : AnswerFormat()
 
     data class BooleanAnswerFormat(
-        var positiveAnswerText: String?,
-        var negativeAnswerText: String?,
-        var defaultValue: Result?
+        var positiveAnswer: String?,
+        var negativeAnswer: String?,
+        var defaultValueParam: Result?
     ) : AnswerFormat() {
         // rather than having these as default values, set them up in init block to allow for
         // JSON deserialization, which does not pay attention to default parameters
-        init {
-            positiveAnswerText = positiveAnswerText ?: "yes"
-            negativeAnswerText = negativeAnswerText ?: "no"
-            defaultValue = defaultValue ?: Result.None
-        }
+
+        val positiveAnswerText: String = positiveAnswer ?: "yes"
+        val negativeAnswerText: String = negativeAnswer ?: "no"
+        val defaultValue: Result = defaultValueParam ?: None
 
         enum class Result {
             None,
@@ -72,7 +72,11 @@ sealed class AnswerFormat {
             NegativeAnswer;
         }
 
-        val textChoices = listOf(TextChoice(positiveAnswerText!!), TextChoice(negativeAnswerText!!))
+        val textChoices
+            get() = listOf(
+                TextChoice(positiveAnswerText),
+                TextChoice(negativeAnswerText)
+            )
 
         fun toResult(id: String?) = when (id) {
             positiveAnswerText -> true
