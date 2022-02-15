@@ -53,7 +53,7 @@ internal class BooleanQuestionView(
             when (preselected) {
                 true -> PositiveAnswer
                 false -> NegativeAnswer
-                else -> answerFormat.defaultValue!!
+                else -> None
             }
 
         booleanAnswerPart = content.add(SingleChoicePart(context))
