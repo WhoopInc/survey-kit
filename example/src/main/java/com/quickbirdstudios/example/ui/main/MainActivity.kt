@@ -99,9 +99,9 @@ class MainActivity : AppCompatActivity() {
                 title = this.resources.getString(R.string.boolean_example_title),
                 text = this.resources.getString(R.string.boolean_example_text),
                 answerFormat = AnswerFormat.BooleanAnswerFormat(
-                    positiveAnswerText = this.resources.getString(R.string.how_fat_min),
-                    negativeAnswerText = this.resources.getString(R.string.how_fat_max),
-                    defaultValue = AnswerFormat.BooleanAnswerFormat.Result.NegativeAnswer
+                    positiveAnswer = this.resources.getString(R.string.how_fat_min),
+                    negativeAnswer = this.resources.getString(R.string.how_fat_max),
+                    defaultValueParam = AnswerFormat.BooleanAnswerFormat.Result.NegativeAnswer
                 )
             ),
             QuestionStep(
