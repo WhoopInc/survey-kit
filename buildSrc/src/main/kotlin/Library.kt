@@ -10,10 +10,10 @@ object Library {
         const val developerName = "QuickBird Studios GmbH"
     }
 
-    object Bintray {
-        const val organization = "quickbirdstudios"
-        const val repository = "android"
-        const val packageName = "SurveyKit"
-        val allLicenses = arrayOf("MIT")
-    }
+//    object Bintray {
+//        const val organization = "quickbirdstudios"
+//        const val repository = "android"
+//        const val packageName = "SurveyKit"
+//        val allLicenses = arrayOf("MIT")
+//    }
 }

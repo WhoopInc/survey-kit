@@ -3,7 +3,7 @@
 package com.quickbirdstudios.surveykit
 
 import Library
-import com.jfrog.bintray.gradle.BintrayExtension
+//import com.jfrog.bintray.gradle.BintrayExtension
 import groovy.util.Node
 import org.gradle.api.Project
 import org.gradle.api.artifacts.Dependency
@@ -20,7 +20,7 @@ fun Project.configureLibraryPublication() {
     configureSourcesJarTaskIfNecessary()
 //    configureCheckCiTagTaskIfNecessary()
     configureLibraryAarPublication()
-    configureBintrayForLibraryPublication()
+//    configureBintrayForLibraryPublication()
     configurePublishTask()
 }
 
@@ -60,23 +60,23 @@ internal fun Node.appendDependency(dependency: Dependency, scope: String? = null
     appendNode("version", dependency.version)
 }
 
-internal fun Project.configureBintrayForLibraryPublication() =
-    extensions.getByType<BintrayExtension>().run {
-        user = bintrayUser()
-        key = bintrayKey()
-        setPublications("aar")
-        pkg.run {
-            name = Library.Bintray.packageName
-            repo = Library.Bintray.repository
-            userOrg = Library.Bintray.organization
-            websiteUrl = Library.Meta.websiteUrl
-            vcsUrl = Library.Meta.gitUrl
-            setLicenses(*Library.Bintray.allLicenses)
-            publish = true
-            version.name = Library.version
-            version.gpg.sign = false
-        }
-    }
+//internal fun Project.configureBintrayForLibraryPublication() =
+//    extensions.getByType<BintrayExtension>().run {
+//        user = bintrayUser()
+//        key = bintrayKey()
+//        setPublications("aar")
+//        pkg.run {
+//            name = Library.Bintray.packageName
+//            repo = Library.Bintray.repository
+//            userOrg = Library.Bintray.organization
+//            websiteUrl = Library.Meta.websiteUrl
+//            vcsUrl = Library.Meta.gitUrl
+//            setLicenses(*Library.Bintray.allLicenses)
+//            publish = true
+//            version.name = Library.version
+//            version.gpg.sign = false
+//        }
+//    }
 
 internal fun Project.configurePublishTask() = afterEvaluate {
     val publish = tasks["publish"]
@@ -87,7 +87,8 @@ internal fun Project.configurePublishTask() = afterEvaluate {
 
 //    publishAarPublicationToMavenLocal.dependsOn(checkCiTagTask)
     publishAarPublicationToMavenLocal.dependsOn(assembleRelease)
-    publish.dependsOn(bintrayUpload)
+//    publish.dependsOn(bintrayUpload)
+    publish.dependsOn(publishAarPublicationToMavenLocal)
 }
 
 private fun Project.bintrayUser(): String {
