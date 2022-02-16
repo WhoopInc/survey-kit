@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "com.whoop"
-version = "2.0.8.5"
+version = "2.0.8.7"
 
 androidExtensions { isExperimental = true }
 
