@@ -1,7 +1,6 @@
 package com.quickbirdstudios.surveykit.backend.views.question_parts
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
@@ -10,13 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatSeekBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import androidx.constraintlayout.widget.ConstraintSet.BOTTOM
-import androidx.constraintlayout.widget.ConstraintSet.CHAIN_SPREAD
-import androidx.constraintlayout.widget.ConstraintSet.LEFT
-import androidx.constraintlayout.widget.ConstraintSet.PARENT_ID
-import androidx.constraintlayout.widget.ConstraintSet.RIGHT
-import androidx.constraintlayout.widget.ConstraintSet.TOP
-import androidx.constraintlayout.widget.ConstraintSet.WRAP_CONTENT
+import androidx.constraintlayout.widget.ConstraintSet.*
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
@@ -166,19 +159,19 @@ internal class ScalePart @JvmOverloads constructor(
             minimumValueDescriptionField = TextView(context).setRandomViewId().apply {
                 this.textAlignment = View.TEXT_ALIGNMENT_CENTER
                 this.setTextSize(TypedValue.COMPLEX_UNIT_PX, descriptionTextSize)
-                this.setTextColor(ContextCompat.getColor(context, R.color.survey_text));
+                this.setTextColor(ContextCompat.getColor(context, R.color.survey_text))
                 this.setPadding(textPadding, textPadding, textPadding, 0)
             }
             maximumValueDescriptionField = TextView(context).setRandomViewId().apply {
                 this.textAlignment = View.TEXT_ALIGNMENT_CENTER
                 this.setTextSize(TypedValue.COMPLEX_UNIT_PX, descriptionTextSize)
-                this.setTextColor(ContextCompat.getColor(context, R.color.survey_text));
+                this.setTextColor(ContextCompat.getColor(context, R.color.survey_text))
                 this.setPadding(textPadding, textPadding, textPadding, 0)
             }
             currentValueDescriptionField = TextView(context).setRandomViewId().apply {
                 this.textAlignment = View.TEXT_ALIGNMENT_CENTER
                 this.setTextSize(TypedValue.COMPLEX_UNIT_PX, selectedTextSize)
-                this.setTextColor(ContextCompat.getColor(context, R.color.survey_text));
+                this.setTextColor(ContextCompat.getColor(context, R.color.survey_text))
                 this.setPadding(textPadding, textPadding, textPadding, 0)
             }
             seekBar = AppCompatSeekBar(context).apply {

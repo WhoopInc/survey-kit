@@ -5,7 +5,7 @@ import com.quickbirdstudios.surveykit.OrderedTask
 import com.quickbirdstudios.surveykit.Task
 import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.steps.Step
-import java.util.Stack
+import java.util.*
 
 interface TaskNavigator {
 
@@ -34,7 +34,7 @@ interface TaskNavigator {
         return history.peek()
     }
 
-    fun hasPreviousStep() : Boolean {
+    fun hasPreviousStep(): Boolean {
         val previousStep = peekHistory()
         return previousStep != null
     }

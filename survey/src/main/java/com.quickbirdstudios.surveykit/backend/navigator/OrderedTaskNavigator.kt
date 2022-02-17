@@ -3,7 +3,7 @@ package com.quickbirdstudios.surveykit.backend.navigator
 import com.quickbirdstudios.surveykit.OrderedTask
 import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.steps.Step
-import java.util.Stack
+import java.util.*
 
 internal class OrderedTaskNavigator(
     override val task: OrderedTask

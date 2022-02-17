@@ -4,7 +4,7 @@ import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.Task
 import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.result.TaskResult
-import java.util.Date
+import java.util.*
 
 internal class ResultGathererImpl(private val task: Task) : ResultGatherer {
 

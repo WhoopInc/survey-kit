@@ -62,9 +62,9 @@ sealed class AnswerFormat {
         // rather than having these as default values, set them up in init block to allow for
         // JSON deserialization, which does not pay attention to default parameters
 
-        val positiveAnswerText: String = positiveAnswer ?: "yes"
-        val negativeAnswerText: String = negativeAnswer ?: "no"
-        val defaultValue: Result = defaultValueParam ?: None
+        val positiveAnswerText get() = positiveAnswer ?: "yes"
+        val negativeAnswerText get() = negativeAnswer ?: "no"
+        val defaultValue get() = defaultValueParam ?: None
 
         enum class Result {
             None,

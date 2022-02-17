@@ -1,7 +1,7 @@
 object Library {
-    const val groupId = "com.quickbirdstudios"
+    const val groupId = "com.whoop"
     const val artifactId = "surveykit"
-    const val version = "2.0.8.7"
+    const val version = "1.0.1"
 
     object Meta {
         const val gitUrl = "https://github.com/quickbirdstudios/SurveyKit"
@@ -9,11 +9,4 @@ object Library {
         const val developerId = "quickbirdstudios"
         const val developerName = "QuickBird Studios GmbH"
     }
-
-//    object Bintray {
-//        const val organization = "quickbirdstudios"
-//        const val repository = "android"
-//        const val packageName = "SurveyKit"
-//        val allLicenses = arrayOf("MIT")
-//    }
 }

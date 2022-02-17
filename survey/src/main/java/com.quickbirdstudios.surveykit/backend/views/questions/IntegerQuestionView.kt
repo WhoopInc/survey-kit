@@ -48,7 +48,7 @@ internal class IntegerQuestionView(
 
         questionAnswerView = content.add(IntegerTextFieldPart.withHint(context, hintText))
         questionAnswerView.field.gravity = Gravity.CENTER
-        questionAnswerView.field.setHint(answerFormat.hint)
+        questionAnswerView.field.hint = answerFormat.hint
         questionAnswerView.field.afterTextChanged { footer.canContinue = isValidInput() }
         val alreadyEntered = preselected?.toString() ?: answerFormat.defaultValue?.toString()
         questionAnswerView.field.setText(alreadyEntered ?: "")

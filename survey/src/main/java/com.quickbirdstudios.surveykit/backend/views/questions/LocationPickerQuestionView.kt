@@ -49,11 +49,11 @@ internal class LocationPickerQuestionView(
         when {
             lifecycle == null -> throw RuntimeException(
                 "Location typed question steps need to attach an Lifecycle." +
-                    " Please pass an Lifecycle when instated on constructor."
+                        " Please pass an Lifecycle when instated on constructor."
             )
             addressProvider == null -> throw RuntimeException(
                 "Location typed question steps need to an AddressSuggestionProvider." +
-                    "Please pass an AddressSuggestionProvider when instated on constructor."
+                        "Please pass an AddressSuggestionProvider when instated on constructor."
             )
         }
 

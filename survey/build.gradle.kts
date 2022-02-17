@@ -1,19 +1,40 @@
 @file:Suppress("SuspiciousCollectionReassignment")
 
+import com.quickbirdstudios.surveykit.gradePass
+import com.quickbirdstudios.surveykit.gradleUser
+
 plugins {
     id("com.android.library")
     kotlin("android")
     id("org.jetbrains.kotlin.android.extensions")
-//    id("com.jfrog.bintray")
     `maven-publish`
-    maven
-    signing
 }
 
-group = "com.whoop"
-version = "2.0.8.7"
-
 androidExtensions { isExperimental = true }
+
+afterEvaluate {
+    val projectName = name
+
+    publishing {
+        repositories {
+            maven {
+                url = uri("https://nexus.qa.whoop.com/repository/maven-releases")
+                credentials {
+                    username = project.gradleUser()
+                    password = project.gradePass()
+                }
+            }
+        }
+        publications {
+            register<MavenPublication>("release") {
+                artifact(file("$buildDir/outputs/aar/$projectName-release.aar"))
+                groupId = Library.groupId
+                artifactId = Library.artifactId
+                version = Library.version
+            }
+        }
+    }
+}
 
 android {
     compileSdkVersion(Project.Android.compileSdkVersion)
@@ -42,64 +63,3 @@ dependencies {
     testImplementation(Deps.Test.jUnitJupiter)
     testImplementation(Deps.Test.jUnitPlatform)
 }
-
-//project.configureLibraryPublication()
-
-//publishing {
-//    publications {
-//        create<MavenPublication>("mavenJava") {
-//            artifactId = "survey-kit"
-//            from(components["java"])
-//            versionMapping {
-//                usage("java-api") {
-//                    fromResolutionOf("runtimeClasspath")
-//                }
-//                usage("java-runtime") {
-//                    fromResolutionResult()
-//                }
-//            }
-//            pom {
-//                name.set("My Library")
-//                description.set("A concise description of my library")
-//                url.set("http://www.example.com/library")
-//                properties.set(
-//                    mapOf(
-//                        "myProp" to "value",
-//                        "prop.with.dots" to "anotherValue"
-//                    )
-//                )
-//                licenses {
-//                    license {
-//                        name.set("The Apache License, Version 2.0")
-//                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-//                    }
-//                }
-//                developers {
-//                    developer {
-//                        id.set("johnd")
-//                        name.set("John Doe")
-//                        email.set("john.doe@example.com")
-//                    }
-//                }
-//                scm {
-//                    connection.set("scm:git:git://example.com/my-library.git")
-//                    developerConnection.set("scm:git:ssh://example.com/my-library.git")
-//                    url.set("http://example.com/my-library/")
-//                }
-//            }
-//        }
-//    }
-//    repositories {
-//        maven {
-//            // change URLs to point to your repos, e.g. http://my.org/repo
-//            val releasesRepoUrl = uri(layout.buildDirectory.dir("repos/releases"))
-//            val snapshotsRepoUrl = uri(layout.buildDirectory.dir("repos/snapshots"))
-//            url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
-//        }
-//    }
-//}
-
-//signing {
-//    sign(publishing.publications["mavenJava"])
-//}
-

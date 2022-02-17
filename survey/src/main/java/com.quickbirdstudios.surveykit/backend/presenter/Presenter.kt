@@ -18,6 +18,7 @@ interface Presenter {
         step: Step,
         stepResult: StepResult?
     ): NextAction
+
     fun triggerBackOnCurrentView()
 
     enum class Transition {

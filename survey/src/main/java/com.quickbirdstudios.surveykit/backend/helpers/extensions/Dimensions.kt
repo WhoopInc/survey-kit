@@ -7,16 +7,16 @@ fun Context.dp(px: Number): Float {
     val resources = this.resources
     val metrics = resources.displayMetrics
     return (
-        px.toFloat() /
-            (metrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT.toFloat())
-        )
+            px.toFloat() /
+                    (metrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT.toFloat())
+            )
 }
 
 fun Context.px(dp: Number): Float {
     val resources = this.resources
     val metrics = resources.displayMetrics
     return (
-        dp.toFloat() *
-            (metrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT.toFloat())
-        )
+            dp.toFloat() *
+                    (metrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT.toFloat())
+            )
 }

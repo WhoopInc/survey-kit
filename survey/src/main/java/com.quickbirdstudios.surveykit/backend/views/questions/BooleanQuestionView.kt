@@ -71,8 +71,8 @@ internal class BooleanQuestionView(
     ): TextChoice? {
         return when (this) {
             None -> null
-            PositiveAnswer -> TextChoice(answerFormat.positiveAnswerText!!)
-            NegativeAnswer -> TextChoice(answerFormat.negativeAnswerText!!)
+            PositiveAnswer -> TextChoice(answerFormat.positiveAnswerText)
+            NegativeAnswer -> TextChoice(answerFormat.negativeAnswerText)
             else -> null
         }
     }
