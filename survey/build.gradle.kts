@@ -1,5 +1,6 @@
 @file:Suppress("SuspiciousCollectionReassignment")
 
+import com.quickbirdstudios.surveykit.appendDependency
 import com.quickbirdstudios.surveykit.gradePass
 import com.quickbirdstudios.surveykit.gradleUser
 
@@ -31,6 +32,18 @@ afterEvaluate {
                 groupId = Library.groupId
                 artifactId = Library.artifactId
                 version = Library.version
+                pom.withXml {
+                    asNode().appendNode("dependencies").apply {
+                        configurations["implementation"].dependencies.forEach { dependency ->
+                            val dependencyNode = appendNode("dependency")
+                            dependencyNode.appendDependency(dependency, scope = "runtime")
+                        }
+                        configurations["api"].dependencies.forEach { dependency ->
+                            val dependencyNode = appendNode("dependency")
+                            dependencyNode.appendDependency(dependency)
+                        }
+                    }
+                }
             }
         }
     }

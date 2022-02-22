@@ -48,14 +48,14 @@ internal fun Project.configureLibraryAarPublication() {
     }
 }
 
-internal fun Node.appendDependency(dependency: Dependency, scope: String? = null) {
-    if (scope != null) {
-        appendNode("scope", scope)
-    }
-    appendNode("groupId", dependency.group)
-    appendNode("artifactId", dependency.name)
-    appendNode("version", dependency.version)
-}
+ fun Node.appendDependency(dependency: Dependency, scope: String? = null) {
+     if (scope != null) {
+         appendNode("scope", scope)
+     }
+     appendNode("groupId", dependency.group)
+     appendNode("artifactId", dependency.name)
+     appendNode("version", dependency.version)
+ }
 
 internal fun Project.configurePublishTask() = afterEvaluate {
     val publish = tasks["publish"]
