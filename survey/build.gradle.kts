@@ -57,6 +57,9 @@ android {
         targetSdkVersion(Project.Android.targetSdkVersion)
         testInstrumentationRunner = Project.Android.testInstrumentationRunner
     }
+    lintOptions {
+        isAbortOnError = false
+    }
 
     testOptions {
         animationsDisabled = true

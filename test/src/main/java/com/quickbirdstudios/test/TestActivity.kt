@@ -10,6 +10,7 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.surveykit.*
+import com.quickbirdstudios.surveykit.AnswerFormat.ScaleAnswerFormat.Orientation.Horizontal
 import com.quickbirdstudios.surveykit.backend.views.main_parts.AbortDialogConfiguration
 import com.quickbirdstudios.surveykit.backend.views.step.StepView
 import com.quickbirdstudios.surveykit.result.QuestionResult
@@ -114,7 +115,8 @@ internal class TestActivity : AppCompatActivity() {
                 minimumValueDescription = this.resources.getString(R.string.how_fat_min),
                 maximumValueDescription = this.resources.getString(R.string.how_fat_max),
                 step = 1f,
-                defaultValue = 3
+                defaultValue = 3,
+                orientation = Horizontal
             )
         )
         multipleChoiceStep = QuestionStep(

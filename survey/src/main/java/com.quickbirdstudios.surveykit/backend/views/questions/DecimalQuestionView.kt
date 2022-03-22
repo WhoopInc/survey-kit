@@ -20,7 +20,7 @@ internal class DecimalQuestionView(
     text: String?,
     nextButtonText: String,
     skipButtonText: String,
-    @StringRes private val hintText: Int = R.string.empty,
+    @StringRes private val hintText: Int? = null,
     private val answerFormat: AnswerFormat.DecimalAnswerFormat,
     private val preselected: Float? = null
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText, skipButtonText) {
@@ -46,7 +46,8 @@ internal class DecimalQuestionView(
     override fun setupViews() {
         super.setupViews()
 
-        questionAnswerView = content.add(DecimalTextFieldPart.withHint(context, hintText))
+        questionAnswerView =
+            content.add(DecimalTextFieldPart.withHint(context, hintText ?: R.string.empty))
         questionAnswerView.field.gravity = Gravity.CENTER
         questionAnswerView.field.hint = answerFormat.hint
         questionAnswerView.field.afterTextChanged { footer.canContinue = isValidInput() }

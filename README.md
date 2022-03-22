@@ -2,15 +2,39 @@
 <img src="assets/top/surveykit-logo.png" width="500">
 </p>
 
+# WHOOP version of SurveyKit
+
+### Purpose
+
+This version was created to allow for surveys to be devined remotely on a sever and sent to the
+client app in the form of JSON which can then be deserialized into a Kotlin object form and
+presented to the user.<br>
+Additionally, a "Decimal" answer format was added to allow for numeric input that includes a decimal
+portion
+
+### Build instructions
+
+1. Set environment variable $NEXUS_RM_USERNAME and $NEXUS_RM_PASSWORD with credentials for NEXUS
+1. Update artifact version in [Library.kt]
+1. Run command "gradlew publishReleasePublicationToMavenRepository"
+   <br>
+   The resulting artifact can be found
+   in [Whoop's Nexis repo](https://nexus.qa.whoop.com/#browse/search/maven=attributes.maven2.artifactId%3Dsurveykit)
+
+## Original readme below
+
 # SurveyKit: Create beautiful surveys on Android (inspired by ResearchKit Surveys on iOS)
 
-Do you want to display a questionnaire to get the opinion of your users? A survey for a medical trial? A series of instructions in a manual-like style? <br/>
+Do you want to display a questionnaire to get the opinion of your users? A survey for a medical
+trial? A series of instructions in a manual-like style? <br/>
 SurveyKit is an Android library that allows you to create exactly that.
 
-Thematically it is built to provide a feeling of a professional research survey. The library aims to be visually clean, lean and easily configurable.
-We aim to keep the functionality close to [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html).
+Thematically it is built to provide a feeling of a professional research survey. The library aims to
+be visually clean, lean and easily configurable. We aim to keep the functionality close
+to [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html).
 
-This is an early version and work in progress. Do not hesitate to give feedback, ideas or improvements via an issue.
+This is an early version and work in progress. Do not hesitate to give feedback, ideas or
+improvements via an issue.
 
 # Examples
 ###### Flow
@@ -74,7 +98,7 @@ allprojects {
 `build.gradle.kts`
 ````kotlin
 dependencies {
-    implementation("com.quickbirdstudios:surveykit:1.1.0")
+    implementation("implementation 'com.whoop:surveykit:1.0.6")
 }
 ````
 Find the [latest version](https://search.maven.org/artifact/com.quickbirdstudios/com.quickbirdstudios.surveykit) or [all releases](https://github.com/quickbirdstudios/SurveyKit/releases)

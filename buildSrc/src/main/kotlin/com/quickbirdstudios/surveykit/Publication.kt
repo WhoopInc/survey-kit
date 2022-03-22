@@ -12,8 +12,8 @@ import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.register
 
-private const val gradleRepoUser = "gradle_user"
-private const val gradleRepoPass = "gradle_pass"
+private const val gradleRepoUser = "NEXUS_RM_USERNAME"
+private const val gradleRepoPass = "NEXUS_RM_PASSWORD"
 
 fun Project.configureLibraryPublication() {
     configureSourcesJarTaskIfNecessary()

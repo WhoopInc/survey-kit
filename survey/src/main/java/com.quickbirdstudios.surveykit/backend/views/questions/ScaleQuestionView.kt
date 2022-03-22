@@ -49,15 +49,9 @@ internal class ScaleQuestionView(
         val maximumValueDescription = answerFormat.maximumValueDescription
 
         val minValueDescription =
-            if (minimumValueDescription.isNotBlank())
-                minimumValueDescription
-            else
-                answerFormat.minimumValue.toString()
+            minimumValueDescription.ifBlank { answerFormat.minimumValue.toString() }
         val maxValueDescription =
-            if (maximumValueDescription.isNotBlank())
-                maximumValueDescription
-            else
-                answerFormat.maximumValue.toString()
+            maximumValueDescription.ifBlank { answerFormat.maximumValue.toString() }
 
         scalePart = content.add(
             ScalePart(
@@ -67,7 +61,8 @@ internal class ScaleQuestionView(
                 maximumValue = answerFormat.maximumValue,
                 maximumValueDescription = maxValueDescription,
                 step = answerFormat.step,
-                defaultValue = preselected ?: answerFormat.defaultValue.toFloat()
+                defaultValue = preselected ?: answerFormat.defaultValue?.toFloat()
+                ?: answerFormat.minimumValue.toFloat()
             )
         )
     }

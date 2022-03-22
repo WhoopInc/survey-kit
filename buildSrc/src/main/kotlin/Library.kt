@@ -1,7 +1,7 @@
 object Library {
     const val groupId = "com.whoop"
     const val artifactId = "surveykit"
-    const val version = "1.0.2"
+    const val version = "1.0.6"
 
     object Meta {
         const val gitUrl = "https://github.com/quickbirdstudios/SurveyKit"

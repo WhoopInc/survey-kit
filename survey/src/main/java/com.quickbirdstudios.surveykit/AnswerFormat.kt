@@ -32,15 +32,15 @@ sealed class AnswerFormat {
 
     data class MultipleChoiceAnswerFormat(
         val textChoices: List<TextChoice>,
-        val defaultSelections: List<TextChoice> = emptyList()
+        val defaultSelections: List<TextChoice>? = null
     ) : AnswerFormat()
 
     data class ScaleAnswerFormat(
         val maximumValue: Int,
         val minimumValue: Int,
-        val defaultValue: Int = minimumValue,
+        val defaultValue: Int?,
         val step: Float,
-        val orientation: Orientation = Orientation.Horizontal,
+        val orientation: Orientation?,// = Orientation.Horizontal,
         val maximumValueDescription: String,
         val minimumValueDescription: String
     ) : AnswerFormat() {
@@ -101,7 +101,7 @@ sealed class AnswerFormat {
     }
 
     data class DateAnswerFormat(
-        val defaultValue: Date? = defaultDateValue(),
+        val defaultValue: Date? = null,//,defaultDateValue(),
         val minDate: JavaDate? = null,
         val maxDate: JavaDate? = null
     ) : AnswerFormat() {
